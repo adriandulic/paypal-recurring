@@ -28,9 +28,9 @@ Then, you can request a new payment authorization:
     :description  => "Awesome - Monthly Subscription",
     :amount       => "9.00",
     :currency     => "USD",
-    :bg_color=>"EFC687", # you can customize bg color (optional)
-    :brand_name=>"My Store title!", # you can customize store title (optional)
-    :logo=>"http://#{your_host}/images/logo.png") # you can customize logo (optional, this overrides brand name)
+    :bg_color     => "EFC687", # you can customize bg color (optional)
+    :brand_name   => "My Store title!", # you can customize store title (optional)
+    :logo         => "http://#{your_host}/images/logo.png") # you can customize logo (optional, this overrides brand name)
   })
 
   response = ppr.checkout
