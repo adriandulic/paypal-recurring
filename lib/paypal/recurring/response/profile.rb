@@ -47,6 +47,7 @@ module PayPal
         end
 
         private
+
         def build_outstanding(value)
           OUTSTANDING.fetch(value, value)
         end

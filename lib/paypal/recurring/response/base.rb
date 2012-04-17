@@ -53,6 +53,7 @@ module PayPal
         end
 
         private
+
         def build_requested_at(stamp) # :nodoc:
           Time.parse(stamp)
         end
