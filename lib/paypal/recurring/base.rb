@@ -73,7 +73,7 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity
+          :item_quantity,
           :logo,
           :bg_color,
           :border_color,
