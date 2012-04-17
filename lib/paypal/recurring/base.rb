@@ -12,7 +12,6 @@ module PayPal
       attr_accessor :initial_amount
       attr_accessor :initial_amount_action
       attr_accessor :ipn_url
-      attr_accessor :locale
       attr_accessor :outstanding
       attr_accessor :payer_id
       attr_accessor :period
@@ -31,6 +30,12 @@ module PayPal
       attr_accessor :trial_length
       attr_accessor :trial_period
       attr_accessor :trial_amount
+      attr_accessor :locale
+      attr_accessor :logo
+      attr_accessor :bg_color
+      attr_accessor :border_color
+      attr_accessor :header_bg_color
+      attr_accessor :brand_name
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -69,6 +74,11 @@ module PayPal
           :item_name,
           :item_amount,
           :item_quantity
+          :logo,
+          :bg_color,
+          :border_color,
+          :header_bg_color,
+          :brand_name
         ).merge(
           :payment_action => "Authorization",
           :no_shipping => 1,
@@ -227,6 +237,28 @@ module PayPal
           :outstanding, 
           :ipn_url, 
           :email)
+        request.run(:update_profile, params)
+      end
+
+
+      # Update a recurring billing profile.
+      #
+      #   ppr = PayPal::Recurring.new({
+      #     :amount                => "99.00",
+      #     :currency              => "USD",
+      #     :description           => "Awesome - Monthly Subscription",
+      #     :note                  => "Changed plan to Gold",
+      #     :ipn_url               => "http://example.com/paypal/ipn",
+      #     :reference             => "1234",
+      #     :profile_id            => "I-VCEL6TRG35CU",
+      #     :start_at              => Time.now,
+      #     :outstanding           => :next_billing
+      #   })
+      #
+      #   response = ppr.update_recurring_profile
+      #
+      def update_recurring_profile
+        params = collect(:amount, :currency, :description, :note, :profile_id, :reference, :start_at, :outstanding, :ipn_url, :email)
         request.run(:update_profile, params)
       end
 

@@ -14,12 +14,13 @@ describe PayPal::Recurring::Response::Profile do
         :note                  => "Changed Plan",
         :profile_id            => "I-89LD5VEHEVK4",
         :outstanding           => :next_billing,
-        :start_at              => Time.now,        
+        :start_at              => Time.now,
       })
       ppr.update_recurring_profile
     }
 
     it { should be_valid }
+
     its(:profile_id) { should == "I-89LD5VEHEVK4" }
     its(:status) { should == "ActiveProfile" }
     its(:errors) { should be_empty }
